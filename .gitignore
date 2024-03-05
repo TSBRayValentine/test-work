@@ -1,0 +1,5 @@
+/front/my-app/node_modules
+/front/my-app/.node_modules
+
+/back/node_modules
+/back/.node_modules
