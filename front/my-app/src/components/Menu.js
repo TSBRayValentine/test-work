@@ -1,21 +1,49 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const MenuItem = ({ item }) => (
-  <li>
-    <a href={item.url}>{item.name}</a>
+const MenuItem = ({ item }) => {
+  const [data, setData] = useState({});
 
-    {item.children?.length > 0 && (
-      <ul>
-        {item.children.map((child) => (
-          <MenuItem key={child.id} item={child} />
-        ))}
-      </ul>
-    )}
-  </li>
-);
+  //   ------------------------------------------
+  // функция для получения данных с сервера
 
-const Menu = ({ onItemClick }) => {
+  const onItemClick = async (item) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/api/treeMenu/checkChildren`,
+        { params: { url: item.url } }
+      );
+
+      if (res.data.length < 0) {
+        console.log(res.data);
+      }
+
+      setData(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <li
+      onClick={async () => {
+        await onItemClick(item);
+      }}
+    >
+      <span href={item.url}>{item.name}</span>
+
+      {data.length > 0 && (
+        <ul>
+          {data.map((item) => (
+            <MenuItem key={item.id} item={item} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+};
+
+const Menu = () => {
   //   ------------------------------------------
   // API запрос для получения данных с сервера
 
@@ -23,7 +51,7 @@ const Menu = ({ onItemClick }) => {
 
   const getData = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/menu/`);
+      const res = await axios.get(`http://localhost:3000/api/treeMenu/getData`);
 
       setData(res.data);
     } catch (error) {
@@ -41,7 +69,7 @@ const Menu = ({ onItemClick }) => {
   return (
     <div>
       <ul>
-        <MenuItem item={data} />
+        <MenuItem key={data.id} item={data} />
       </ul>
     </div>
   );

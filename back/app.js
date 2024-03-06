@@ -1,17 +1,21 @@
 const express = require("express");
+const router = express.Router();
+
 const cors = require("cors");
 
 const app = express();
 
-app.use(cors()); // Это разрешит CORS для всех доменов
+app.use(cors());
 
-const menuData = require("./data");
-// Модель данных древовидного меню
+// --------------------------------------------------
+// Подключение главного файла с маршрутами
 
-// Метод для загрузки данных меню
-app.get("/api/menu", (req, res) => {
-  res.json(menuData);
-});
+const routers = require("./main.routes");
+
+app.use("/api", routers);
+
+// --------------------------------------------------
+// Запуск приложения
 
 app.listen(3000, () => {
   console.log("Backend запущен на порту 3000");
