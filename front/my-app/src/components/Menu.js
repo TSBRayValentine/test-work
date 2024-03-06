@@ -8,14 +8,17 @@ const MenuItem = ({ item }) => {
   // функция для получения данных с сервера
 
   const onItemClick = async (item) => {
+    setData({});
+
     try {
       const res = await axios.get(
         `http://localhost:3000/api/treeMenu/checkChildren`,
         { params: { url: item.url } }
       );
 
-      if (res.data.length < 0) {
+      if (res.data.length === 0) {
         console.log(res.data);
+        window.location.href = `http://localhost:8083/${item.url}`;
       }
 
       setData(res.data);
@@ -25,12 +28,15 @@ const MenuItem = ({ item }) => {
   };
 
   return (
-    <li
-      onClick={async () => {
-        await onItemClick(item);
-      }}
-    >
-      <span href={item.url}>{item.name}</span>
+    <li>
+      <span
+        onClick={async () => {
+          await onItemClick(item);
+        }}
+        href={item.url}
+      >
+        {item.name}
+      </span>
 
       {data.length > 0 && (
         <ul>
@@ -61,7 +67,7 @@ const Menu = () => {
 
   useEffect(() => {
     getData();
-  }, []); // <-- passing an empty array as a second argument triggers the effect only once
+  }, []);
 
   //   ------------------------------------------
   // API запрос для получения данных с сервера
