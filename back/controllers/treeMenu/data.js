@@ -37,12 +37,12 @@ const data = {
         {
           id: 13,
           name: "Подкатегория 1",
-          url: "/category-1/subcategory-1",
+          url: "/category-2/subcategory-1",
           children: [
             {
               id: 16,
               name: "Подкатегория Подкатегория 1",
-              url: "/category-1/subcategory-1/subcategory-subcategory-1",
+              url: "/category-2/subcategory-1/subcategory-subcategory-1",
               children: [],
             },
           ],
@@ -50,7 +50,7 @@ const data = {
         {
           id: 14,
           name: "Подкатегория 2",
-          url: "/category-1/subcategory-2",
+          url: "/category-2/subcategory-2",
           children: [],
         },
       ],

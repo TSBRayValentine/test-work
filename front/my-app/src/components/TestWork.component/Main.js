@@ -10,13 +10,16 @@ export const Main = () => {
   };
 
   return (
-    <div class="test-work-main">
-      <Menu handleItemClick={handleItemClick} />
-      {selectedItem ? (
-        <SelectItem item={selectedItem} />
-      ) : (
-        <div>Выберите элемент</div>
-      )}
+    <div>
+      <div className="test-work-main content">
+        <Menu handleItemClick={handleItemClick} />
+
+        {selectedItem ? (
+          <SelectItem item={selectedItem} />
+        ) : (
+          <div className="main-item">Выберите элемент</div>
+        )}
+      </div>
     </div>
   );
 };

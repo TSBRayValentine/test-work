@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MenuItem } from "./MenuItem";
 
+import "./index.css";
+
 export const Menu = ({ handleItemClick }) => {
   //   ------------------------------------------
-  // API запрос для получения данных с сервера
+  // API запрос для получения первичных данных с сервера
   const [data, setData] = useState({});
 
   const getData = async () => {
@@ -24,7 +26,7 @@ export const Menu = ({ handleItemClick }) => {
   //   ------------------------------------------
   // API запрос для получения данных с сервера
   return (
-    <div>
+    <div className="main-item">
       <ul>
         <MenuItem key={data.id} item={data} handleItemClick={handleItemClick} />
       </ul>

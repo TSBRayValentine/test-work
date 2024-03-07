@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import "./index.css";
 export const MenuItem = ({ item, handleItemClick }) => {
   const [data, setData] = useState({});
 
@@ -28,12 +29,12 @@ export const MenuItem = ({ item, handleItemClick }) => {
   };
 
   return (
-    <li>
+    <li className="li">
       <span
         onClick={async () => {
           await onItemClick(item);
         }}
-        href={item.url}
+        className="menu-item"
       >
         {item.name}
       </span>
