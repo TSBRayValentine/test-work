@@ -12,7 +12,6 @@ export const Menu = ({ handleItemClick }) => {
   const getData = async () => {
     try {
       const res = await axios.get(`http://localhost:3000/api/treeMenu/getData`);
-
       setData(res.data);
     } catch (error) {
       console.log(error);
@@ -23,8 +22,9 @@ export const Menu = ({ handleItemClick }) => {
     getData();
   }, []);
 
-  //   ------------------------------------------
-  // API запрос для получения данных с сервера
+  // ------------------------------------------
+  // HTML
+
   return (
     <div className="main-item">
       <ul>

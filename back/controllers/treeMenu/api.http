@@ -1,7 +1,10 @@
+
+//getData
 GET http://localhost:3000/api/treeMenu/getData
 
 ###
+//checkChildren
 
-GET http://localhost:3000/api/treeMenu/checkChildren?url=/
+GET http://localhost:3000/api/treeMenu/checkChildren?id=1
 
 

@@ -17,7 +17,7 @@ export const Main = () => {
         {selectedItem ? (
           <SelectItem item={selectedItem} />
         ) : (
-          <div className="main-item">Выберите элемент</div>
+          <div className="main-item has-text-weight-bold">Выберите элемент</div>
         )}
       </div>
     </div>
